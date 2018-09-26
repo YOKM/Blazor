@@ -1,0 +1,521 @@
+@using ImagingTaskSchedule.Shared
+@using ImagingTaskSchedule.Shared.Models
+@page "/ImagingTasks"
+@using Microsoft.AspNetCore.Blazor.Browser
+
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Blazor
+
+@inject HttpClient Http
+
+<h2>Imaging Shedule Tasks</h2>
+
+<p>Jobname : @MasterJob_APIdata.Jobname</p>
+
+@**@
+
+
+
+@*Edit window popup in the center for editing *@
+@if (ShowEditWindow == "Open")
+{
+
+
+<div id="outPopup" style="position:fixed ;top: 50%;  left: 50%; transform: translate(-50%, -50%); width: 60%;background:#FFFFFF;border-color:black;border-style:solid">
+
+    <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Schedule Task</h4>
+        <h5>@MasterJob_APIdata.Jobname </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="@CloseEditWindow">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Task Name </th>
+            <th class="tg-yt02">Schedule Time </th>
+            <th class="tg-yt02">Set Active </th>
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@MasterJob_APIdata.Jobname" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@MasterJob_APIdata.ScheduleTime" /></td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@MasterJob_APIdata.IsActive" /></td>
+        </tr>
+    </table>
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Email Notification </th>
+            <th class="tg-yt02">sFTP Host </th>
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@DetailJob_APIdata.EmailNotificationAddress" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@DetailJob_APIdata.SFtphost" /></td>
+        </tr>
+    </table>
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Upload From </th>
+            <th class="tg-yt02">Upload To </th>
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@DetailJob_APIdata.SFtpuploadFrom" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@DetailJob_APIdata.SFtpuploadto" /></td>
+        </tr>
+    </table>
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Download From </th>
+            <th class="tg-yt02">Download To </th>
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@DetailJob_APIdata.SFtpdownloadFrom" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@DetailJob_APIdata.SFtpdownloadTo" /></td>
+        </tr>
+    </table>
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Other1 </th>
+            <th class="tg-yt02">Other2 </th>
+            <th class="tg-yt02">Other3 </th>
+            <th class="tg-yt02">Other4 </th>
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@DetailJob_APIdata.Extra1" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@DetailJob_APIdata.Extra2" /></td>
+            <td class="tg-3w7a"><input type="text" class="form-control" bind="@DetailJob_APIdata.Extra3" /> </td>
+            <td class="tg-5d1u"><input type="text" class="form-control" bind="@DetailJob_APIdata.Extra4" /></td>
+        </tr>
+    </table>
+
+
+    <table class="tg" style=" width: 100%;height: 100%;">
+        <tr>
+            <th class="tg-yt02">Description </th>
+
+        </tr>
+        <tr>
+            <td class="tg-3w7a"><textarea type="text" class="form-control" bind="@MasterJob_APIdata.Description" /> </td>
+
+        </tr>
+    </table>
+    <div id="submission">
+        <button onclick="@SaveTask" type="button" class="btn btn-primary">Save</button>
+        <button onclick="@CloseEditWindow" type="button" class="btn btn-primary">Cancel</button>
+    </div>
+   
+
+    @* *@
+
+
+</div>
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@**@
+
+
+
+
+
+
+
+
+@if (MasterTask == null)
+{
+
+    <p><em>Loading...</em></p>
+
+}
+else
+{
+    <table>
+
+        <tr style="height: 30px; background-color:#336699 ; color:#FFFFFF ;border: solid 1px #659EC7;">
+            <td>
+                @*Header and filter should go here*@
+            </td>
+
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                Job Name
+            </td>
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                Schedule Time
+            </td>
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                Active
+            </td>
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                Description
+            </td>
+            <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                Edit
+            </td>
+        </tr>
+
+        @*Master info*@
+        @foreach (var MTask in MasterTask)
+        {
+
+            <tr style="border-style:solid;border-width:2px;border-color: @(MTask.Id == JobId ? "#ff6a00" : "#a2aabe")">
+                @*Expand Image in the first cell to open details info *@
+
+                <td align="center" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                    @if (@MTask.Id == JobId)
+                    {
+                        <img src="@Imagename" onclick="@(async () => await getTaskDetails(@MTask.Id))" />
+                    }
+                    else
+                    {
+                        <img src="Images/expand.png" onclick="@(async () => await getTaskDetails(MTask.Id))" />
+                    }
+                </td>
+
+
+
+                @*<td>@MTask.Id</td>*@
+                <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed; ">
+                    @MTask.Jobname
+                </td>
+                <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                    @MTask.ScheduleTime
+
+                </td>
+                <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                    @* @MTask.IsActive*@
+                    @if (MTask.IsActive == "True")
+                    {
+                        <img src="Images/bullet_green.png" />
+                    }
+                    else
+                    {
+                        <img src="Images/bullet_red.png" />
+
+                    }
+                </td>
+                <td align="left" style="border: solid 1px #659EC7; padding: 5px;table-layout:fixed;">
+                    @MTask.Description
+                </td>
+
+                @*Edit Button onclick = "@(async () => await EditTaskMaster(MTask.Id))"*@
+                <td>
+                    <img src="Images/input_edit.png" onclick="@(async () => await EditTaskMaster(MTask.Id))" />
+                </td>
+            </tr>
+
+            @if (DetailsTask != null)
+            {
+                @if (showDetails)
+                {
+                    @if (MTask.Id == JobId)
+                    {
+                        <tr></tr>
+                        <td id="detailsRow" colspan="6" style="">
+                            @foreach (var CurrentTask_Details in DetailsTask)
+                            {
+                            <tr><text style="color:brown; font-size:medium">Details on Task: </text></tr>
+
+                           if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.Jobname))
+                                {
+                                <tr> <span class="detailsTitle"></span> Jobname:<span class="detailsData"> @CurrentTask_Details.Jobname </span></tr>
+                            }
+
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.EmailNotificationAddress))
+                                {
+                                <tr> <span class="detailsTitle"></span> EmailNotifications:<span class="detailsData"> @CurrentTask_Details.EmailNotificationAddress </span></tr>}
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.SFtpuploadto))
+                            {
+                                <tr> <span class="detailsTitle"></span>  Upload to:  <span class="detailsData"> @CurrentTask_Details.SFtpuploadto </span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.SFtpuploadFrom))
+                            {
+                                <tr> <span class="detailsTitle"></span> Upload From <span class="detailsData"> @CurrentTask_Details.SFtpuploadFrom </span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.SFtphost))
+                            {
+                                <tr> <span class="detailsTitle"></span>  sFTP Host:  <span class="detailsData"> @CurrentTask_Details.SFtphost </span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.SFtpdownloadTo))
+                            {
+                                <tr> <span class="detailsTitle"></span>   Download to:  <span class="detailsData"> @CurrentTask_Details.SFtpdownloadTo </span></tr>}
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.SFtpdownloadFrom))
+                            {
+                                <tr> <span class="detailsTitle"></span> Download From:  <span class="detailsData"> @CurrentTask_Details.SFtpdownloadFrom </span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.Extra1))
+                            {
+                                <tr> <span class="detailsTitle"></span>  Other1   <span class="detailsData"> @CurrentTask_Details.Extra1</span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.Extra2))
+                            {
+                                <tr> <span class="detailsTitle"></span>  Other2 <span class="detailsData"> @CurrentTask_Details.Extra2</span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.Extra3))
+                            {
+                                <tr> <span class="detailsTitle"></span>  Other3 <span class="detailsData"> @CurrentTask_Details.Extra3</span></tr> }
+
+                            if (!string.IsNullOrWhiteSpace(@CurrentTask_Details.Extra4))
+                            {
+                                <tr> <span class="detailsTitle"></span>  Other4 <span class="detailsData"> @CurrentTask_Details.Extra4</span></tr>}
+                        }
+
+                            </td>
+                            <tr></tr>
+
+
+                        }
+
+                }
+            }
+        }
+
+    </table>
+
+
+}
+    <style type="text/css">
+
+        #submission {
+          width:100%;
+     
+        }
+
+        #detailsRow {
+            border-bottom-color: darkgreen;
+            background-color: lightblue
+        }
+
+        #detailsRow tr {
+            font-size: small
+        }
+
+        #detailsRow .detailsTitle {
+            width: 5%;
+        }
+        #detailsRow .detailsData {
+            color: darkblue;
+            font-style: italic;
+            font-family: Ubuntu;
+            font-size: medium
+        }
+
+        #submission button {
+            float: right;
+            <!-- margin-right:5px; -->
+
+        }
+
+       
+        
+        
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: none;
+            border-color: #aabcfe;
+        }
+
+            .tg td {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                padding: 10px 5px;
+                border-style: solid;
+                border-width: 0px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: #aabcfe;
+                color: #669;
+                background-color: #e8edff;
+            }
+
+            .tg th {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                padding: 10px 5px;
+                border-style: solid;
+                border-width: 0px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: #aabcfe;
+                color: #039;
+                background-color: #b9c9fe;
+            }
+
+            .tg .tg-5d1u {
+                background-color: #D2E4FC;
+                font-weight: bold;
+                font-family: "Lucida Console", Monaco, monospace !important;
+                ;
+                border-color: inherit;
+                text-align: left;
+                vertical-align: top
+            }
+
+            .tg .tg-yt02 {
+                font-weight: bold;
+                font-size:small;
+                font-family: "Lucida Console", Monaco, monospace !important;
+                border-color: inherit;
+                text-align: left;
+                vertical-align: top
+            }
+
+            .tg .tg-3w7a {
+                background-color: #D2E4FC;
+                font-weight: bold;
+                font-family: "Lucida Console", Monaco, monospace !important;
+                ;
+                color: #493f3f;
+                border-color: inherit;
+                text-align: left
+            }
+    </style>
+
+@functions
+{
+    ImagingScheduleJob[] MasterTask;
+    ImagingJobdetails[] DetailsTask;
+
+    ImagingScheduleJob MasterJob_APIdata = new ImagingScheduleJob();
+    ImagingJobdetails DetailJob_APIdata = new ImagingJobdetails();
+
+    int JobId = 0;
+    int CurrentDetailsJobID = 0;
+
+    string Imagename = "Images/expand.png";
+    bool showDetails = false;
+    string ShowEditWindow = "";
+
+    string closeMessage = "";
+    string Messages = "";
+
+    protected override async Task OnInitAsync()
+    {
+        MasterTask = await Http.GetJsonAsync<ImagingScheduleJob[]>("/api/ImagingScheduleJobs/");
+        MasterJob_APIdata = new ImagingScheduleJob();
+        DetailJob_APIdata = new ImagingJobdetails();
+
+    }
+
+    protected async Task getTaskDetails(int JobId_fromMasterAPI)
+    {
+
+        if (JobId != JobId_fromMasterAPI)
+        {
+            Imagename = "Images/expand.png";
+            showDetails = true;
+
+        }
+        else
+        {
+            if (showDetails == false)
+            {
+                Imagename = "Images/expand.png";
+
+                showDetails = true;
+
+            }
+            else
+            {
+                Imagename = "Images/toggle.png";
+                showDetails = false;
+            }
+
+        }
+
+
+
+        // from an array we find the JobId , the whole table is load in the Json file.
+        JobId = JobId_fromMasterAPI;
+        DetailsTask = await Http.GetJsonAsync<ImagingJobdetails[]>("api/ImagingJobdetails/" + Convert.ToInt32(JobId));
+
+
+
+
+
+    }
+
+    void CloseEditWindow()
+    {
+
+        ShowEditWindow = "Close";
+
+    }
+
+    void Editwindow()
+    {
+        ShowEditWindow = "Open";
+
+        //  ordsM = await Http.GetJsonAsync<OrderMasters>("/api/OrderMasters/" + Convert.ToInt32(OrderNos));
+
+        // MasterJob_APIdata = await Http.GetJsonAsync<ImagingScheduleTask>("/api/");
+
+    }
+
+    // open edit Window get Data from APi into form
+    protected async Task EditTaskMaster(int jobidOnGrid)
+    {
+        ShowEditWindow = "Open";
+        showDetails = false;
+        Console.WriteLine("console ID Job on GRID: " + jobidOnGrid.ToString());
+        // MasterJob_APIdata = new ImagingScheduleJob();
+        MasterJob_APIdata = await Http.GetJsonAsync<ImagingScheduleJob>("/api/ImagingScheduleJobs/" + Convert.ToInt32(jobidOnGrid));
+        Console.WriteLine(MasterJob_APIdata.Id + " Master jobname " + MasterJob_APIdata.Jobname);
+
+
+
+        DetailJob_APIdata = await Http.GetJsonAsync<ImagingJobdetails>("/api/ImagingJobdetails1/" + Convert.ToInt32(MasterJob_APIdata.Id));
+        Console.WriteLine(DetailJob_APIdata.Jobid +  " Detail jobname " + DetailJob_APIdata.Jobname);
+    }
+
+
+    protected async Task SaveTask()
+    {
+
+        if (MasterJob_APIdata.Id == 0)
+        {
+            await Http.SendJsonAsync(HttpMethod.Post, "/api/ImagingScheduleJobs/", MasterTask);
+            await Http.SendJsonAsync(HttpMethod.Post, "api/ImagingJobdetails/", DetailsTask);
+        }
+        else
+        {
+            await Http.SendJsonAsync(HttpMethod.Put,"/api/ImagingScheduleJobs/"+ MasterJob_APIdata.Id,MasterJob_APIdata);
+            await Http.SendJsonAsync(HttpMethod.Put, "/api/ImagingJobdetails/" + DetailJob_APIdata.Id,DetailJob_APIdata);
+        }
+        MasterJob_APIdata = new ImagingScheduleJob();
+        MasterTask = await Http.GetJsonAsync<ImagingScheduleJob[]>("/api/ImagingScheduleJobs/");
+
+
+        //Details Info 
+
+        DetailsTask = await Http.GetJsonAsync<ImagingJobdetails[]>("api/ImagingJobdetails/" + DetailJob_APIdata.Id);
+        DetailJob_APIdata = new ImagingJobdetails();
+
+        ShowEditWindow = "Close";
+    }
+
+}

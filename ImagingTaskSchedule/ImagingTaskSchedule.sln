@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagingTaskSchedule.Server", "ImagingTaskSchedule.Server\ImagingTaskSchedule.Server.csproj", "{0AC6CD75-31A9-4B9D-B22A-228A0436985A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagingTaskSchedule.Client", "ImagingTaskSchedule.Client\ImagingTaskSchedule.Client.csproj", "{3DAFC90E-032E-4E64-8D6C-55B265FC43AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagingTaskSchedule.Shared", "ImagingTaskSchedule.Shared\ImagingTaskSchedule.Shared.csproj", "{1D265CBA-241A-40B9-947B-C24E9C9B5334}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AC6CD75-31A9-4B9D-B22A-228A0436985A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC6CD75-31A9-4B9D-B22A-228A0436985A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC6CD75-31A9-4B9D-B22A-228A0436985A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC6CD75-31A9-4B9D-B22A-228A0436985A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DAFC90E-032E-4E64-8D6C-55B265FC43AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAFC90E-032E-4E64-8D6C-55B265FC43AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAFC90E-032E-4E64-8D6C-55B265FC43AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAFC90E-032E-4E64-8D6C-55B265FC43AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D265CBA-241A-40B9-947B-C24E9C9B5334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D265CBA-241A-40B9-947B-C24E9C9B5334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D265CBA-241A-40B9-947B-C24E9C9B5334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D265CBA-241A-40B9-947B-C24E9C9B5334}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AED197D-ED54-4552-A49A-5BC4143633BE}
+	EndGlobalSection
+EndGlobal
