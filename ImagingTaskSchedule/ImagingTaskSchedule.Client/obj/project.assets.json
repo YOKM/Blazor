@@ -3664,11 +3664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj",
+      "projectUniqueName": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj",
       "projectName": "ImagingTaskSchedule.Client",
-      "projectPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj",
+      "projectPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj",
       "packagesPath": "C:\\Users\\ahmad.chady\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\obj\\",
+      "outputPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3687,8 +3687,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj": {
-              "projectPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj"
+            "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj": {
+              "projectPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj"
             }
           }
         }

@@ -12859,11 +12859,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\ImagingTaskSchedule.Server.csproj",
+      "projectUniqueName": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\ImagingTaskSchedule.Server.csproj",
       "projectName": "ImagingTaskSchedule.Server",
-      "projectPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\ImagingTaskSchedule.Server.csproj",
+      "projectPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\ImagingTaskSchedule.Server.csproj",
       "packagesPath": "C:\\Users\\ahmad.chady\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\obj\\",
+      "outputPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12882,11 +12882,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj": {
-              "projectPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj"
+            "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj": {
+              "projectPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Client\\ImagingTaskSchedule.Client.csproj"
             },
-            "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj": {
-              "projectPath": "C:\\Users\\ahmad.chady\\source\\repos\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj"
+            "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj": {
+              "projectPath": "E:\\Projects\\BLAZOR\\ImagingTaskSchedule\\ImagingTaskSchedule.Shared\\ImagingTaskSchedule.Shared.csproj"
             }
           }
         }

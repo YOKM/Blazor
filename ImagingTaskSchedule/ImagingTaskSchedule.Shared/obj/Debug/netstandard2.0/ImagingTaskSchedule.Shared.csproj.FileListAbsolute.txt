@@ -7,3 +7,11 @@ C:\Users\ahmad.chady\source\repos\ImagingTaskSchedule\ImagingTaskSchedule.Shared
 C:\Users\ahmad.chady\source\repos\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.dll
 C:\Users\ahmad.chady\source\repos\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.pdb
 C:\Users\ahmad.chady\source\repos\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.csprojAssemblyReference.cache
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.csproj.CoreCompileInputs.cache
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.AssemblyInfoInputs.cache
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.AssemblyInfo.cs
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.dll
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\obj\Debug\netstandard2.0\ImagingTaskSchedule.Shared.pdb
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\bin\Debug\netstandard2.0\ImagingTaskSchedule.Shared.deps.json
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\bin\Debug\netstandard2.0\ImagingTaskSchedule.Shared.dll
+E:\Projects\BLAZOR\ImagingTaskSchedule\ImagingTaskSchedule.Shared\bin\Debug\netstandard2.0\ImagingTaskSchedule.Shared.pdb
